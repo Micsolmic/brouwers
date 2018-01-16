@@ -11,7 +11,15 @@
 <v:terug/>
 <h1>Brouwerz op naam</h1>
 
+<c:forEach items='${alfabet}' var='letter'>
 
+<c:url var="nextUrl" value="">
+        <c:param name='beginletter' value="${letter}" />
+</c:url>
+
+<a href='${nextUrl}'><span class='uppercase'>${letter}</span></a>
+
+</c:forEach>
 
 </body>
 </html>
