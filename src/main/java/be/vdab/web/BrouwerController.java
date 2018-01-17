@@ -3,6 +3,7 @@ package be.vdab.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import be.vdab.entities.Alfabet;
@@ -30,13 +31,20 @@ public class BrouwerController {
 	}
 	
 	
-	
-	
+	@GetMapping("beginnaam")
+	ModelAndView perLetter(@RequestParam(value="beginletter", required=true) String beginletter) {
+		System.out.println(service.findByNaam(beginletter));
+		return new ModelAndView(OPNAAM_VIEW, "alfabet", Alfabet.getAlfabet('a','z'))
+				.addObject("metletter", service.findByNaam(beginletter));
+		
+	}
+	/*
 	@GetMapping("beginnaam") 
 	ModelAndView sortAll() {
+		System.out.println("ba");
 	return new ModelAndView(OPNAAM_VIEW, "alfabet", Alfabet.getAlfabet('a','z')); 
 	}
-	
+	*/
 	
 // multiple request attributes .addObject("werknemers", werknemerService.findAll()); 	
 // this to inject parameter	@RequestParam("foo")

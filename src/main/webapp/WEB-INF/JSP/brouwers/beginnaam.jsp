@@ -21,5 +21,12 @@
 
 </c:forEach>
 
+<ul>
+<c:forEach var='brouwer' items='${metletter}'>
+	<li>${brouwer.naam}(${brouwer.adres.gemeente})</li>
+</c:forEach>
+</ul>
+
+
 </body>
 </html>
